@@ -1,0 +1,25 @@
+#headerbar{
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 0;
+    .navbar{
+        .navbar-brand{
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #007bff;
+            &:hover{
+                color: #0056b3;
+            }
+        }
+        .nav-item{
+            .nav-link{
+                color: #007bff;
+                font-size: 1.2rem;
+                font-weight: 500;
+                &:hover{
+                    color: #0056b3;
+                }
+            }
+        }
+    }
+}
