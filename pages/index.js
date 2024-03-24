@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react"
 import { Inter } from "next/font/google"
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signOut } from "next-auth/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
