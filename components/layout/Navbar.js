@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
 
-const navItems = ["Inicio", "Acerca De", "ITCHII", "Últimas Noticias"];
+const navItems = ["Inicio", "Acerca De", "ITCHII"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
