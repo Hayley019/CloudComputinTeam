@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
 
-const navItems = ["Inicio", "Acerca De", "AstraZeneca", "Últimas Noticias"];
+const navItems = ["Inicio", "Acerca De", "ITCHII", "Últimas Noticias"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +21,8 @@ export default function Navbar() {
         <nav className="container flex justify-between items-center z-20">
           <div className="my-5 lg:my-6">
             <img
-              src="/img/az.png"
-              alt="astrazeneca_logo"
+              src="https://www.chihuahua2.tecnm.mx/wp-content/uploads/2023/03/logo-002.png"
+              alt="itchii_logo"
               className="w-24 h-auto sm:w-40 md:w-56 lg:w-24 mt-auto"
             />
           </div>
