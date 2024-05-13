@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed z-50 top-0 w-full bg-white">
+      <div className="fixed z-50 top-0 w-full bg-gray-50 border-gray-200 border-b-2 shadow-md">
         <nav className="container flex justify-between items-center z-20">
           <div className="my-5 lg:my-6">
             <img
@@ -27,14 +27,14 @@ export default function Navbar() {
             />
           </div>
 
-          <div className="hidden lg:block text-sm text-black">
+          <div className="hidden lg:block text-sm text-neutral-black">
             {navItems.map((navItem) => (
               <a className="mx-3 py-5 hover:gradient-border-bottom" href="#">
                 {navItem}
               </a>
             ))}
           </div>
-
+          
           {loading === "unauthenticated" && (
             <button
               className="hidden lg:block text-neutral-black text-sm hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"

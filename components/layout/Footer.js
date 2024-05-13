@@ -1,14 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="bg-black py-10">
+    <footer className="py-10 bg-blue-900">
       <div className="container">
         <div className="text-center grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-12 lg:gap-0">
           <div className="flex flex-col justify-between lg:justify-self-start lg:col-span-3">
             
             <div className="flex justify-between items-center">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Logo-TecNM-2017.png"
-                alt="astrazeneca_logo_bw"
+                src="https://ventanilla.zitacuaro.tecnm.mx/img/logos/tecnm.png"
+                alt="TecNM_logo"
                 className="w-32 h-auto sm:w-48 md:w-64 lg:w-32"
               />
             </div>

@@ -21,8 +21,8 @@ export default function Hero() {
           <div className="h-1/2 flex flex-col justify-center items-center text-center lg:items-start lg:text-left ">
             
              <h1 className="text-4xl lg:text-5xl text-red-dark pb-5">BisonTour</h1>
-             <div className="flex  ">
-              <p className="text-gray-dark text-xs lg:text-base text-justify leading-5 mb-7 w-2/4 mt-16">
+             <div className="flex items-center lg:flex-row">
+              <p className="text-gray-dark text-xs lg:text-base text-justify leading-5 mb-7 lg:mr-16 lg:mt-0 lg:w-1/2">
               Explora, conoce y aprende sobre el entorno de trabajo del
               Instituto Tecnologico de Chihuahua II. Con BisonTour, 
               podrás conocer las instalaciones de la
@@ -38,13 +38,23 @@ export default function Hero() {
               />
               </div>
             </div>
-            
+            {loading === "unauthenticated" && (
             <button
-              className="text-neutral-black text-lg hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"
-              onClick={startTour}
+              className="text-lg text-white bg-indigo-800 hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"  
+              onClick={() => signIn()}
             >
-              Iniciar Tour
+              Iniciar Sesión
             </button>
+          )}
+          {loading === "authenticated" && (
+            <button
+            className="text-neutral-black text-lg hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"
+            onClick={startTour}
+          >
+            Iniciar Tour
+          </button>
+          )}
+            
             
           </div>
           
