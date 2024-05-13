@@ -40,7 +40,7 @@ export default function Hero() {
             </div>
             {loading === "unauthenticated" && (
             <button
-              className="text-lg text-white bg-indigo-800 hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"  
+              className="text-lg rounded-md text-white bg-red-900 border-b-8 border-t-8 border-r-8 border-l-8 hover:bg-gray-dark border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"  
               onClick={() => signIn()}
             >
               Iniciar Sesión
@@ -48,7 +48,7 @@ export default function Hero() {
           )}
           {loading === "authenticated" && (
             <button
-            className="text-neutral-black text-lg hover:border-black border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"
+            className="text-lg rounded-md text-white bg-red-900 border-b-8 border-t-8 border-r-8 border-l-8 hover:bg-gray-dark border-b-2 border-transparent transition duration-500 ease-in-out focus:outline-none font-semibold italic"  
             onClick={startTour}
           >
             Iniciar Tour
