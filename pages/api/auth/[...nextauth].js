@@ -68,6 +68,7 @@ export const authOptions = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
       
+      // save profile to database, adding the role
       async profile(profile) {
         const client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
@@ -86,6 +87,7 @@ export const authOptions = {
             email: profile.email,
             username: profile.name, // Puedes ajustar esto según la información que desees almacenar
             // Aquí puedes almacenar más información según la que proporciona el objeto 'profile'
+            role: "user"
           };
 
           await collection.insertOne(newUser);
@@ -99,68 +101,19 @@ export const authOptions = {
         };
 
       },
+      callbacks: {
+        // using the role saved in the database, redirect to the correct page
+        async redirect(url, baseUrl) {
+          return baseUrl;
+        },
+        
+      }
 
-      // Save the user profile in MongoDB
-      /* async authorize(profile) {
-        // Lógica de autorización para GitHub
-        const client = new MongoClient(process.env.MONGODB_URI);
-        await client.connect();
-
-        const collection = client.db("Tour").collection("Users");
-        const existingUser = await collection.findOne({ email: profile.email });
-
-        if (existingUser) {
-          // Si el usuario ya existe
-          console.log("User already exists");
-
-          return { name: existingUser.username };
-        } else {
-          // Si el usuario no existe, lo registramos
-          const newUser = {
-            email: profile.email,
-            username: profile.name, // Puedes ajustar esto según la información que desees almacenar
-            // Aquí puedes almacenar más información según la que proporciona el objeto 'profile'
-          };
-          await collection.insertOne(newUser);
-          return { name: newUser.username };
-        }
-      }, */
     }),
   ],
 
   secret: process.env.NEXTAUTH_SECRET,
-  /*callbacks: {
-    async signIn(user, account, credentials) {
-      console.log("signIn", credentials);
-      const client = new MongoClient(process.env.MONGODB_URI);
-      await client.connect();
-
-      const collection = client.db("Tour").collection("Users");
-      const existingUser = await collection.findOne({ email: credentials.email });
-
-      if (!existingUser) {
-        // If user doesn't exist in the database, create a new one
-        await collection.insertOne({
-          email: credentials.email,
-          name: credentials.name,
-          // You may want to add more user information here
-        });
-      }
-
-      return true;
-    },
-    async jwt(token, user, credentials) {
-      if (credentials) {
-        token.id = credentials.id;
-      }
-
-      return token;
-    },
-    async session(session, token) {
-      session.user.id = token.id;
-      return session;
-    },
-  },*/
+  
 };
 
 export default NextAuth(authOptions);
