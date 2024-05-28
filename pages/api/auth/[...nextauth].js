@@ -4,7 +4,8 @@ import GithubProvider from "next-auth/providers/github";
 import { MongoClient } from "mongodb";
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import clientPromise from "@lib/mongodb";
-import mongoose from "mongoose";
+
+
 
 
 export const authOptions = {
@@ -33,7 +34,7 @@ export const authOptions = {
             provider: "credentials",
             role: "user",
           });
-          return { name: credentials.username };
+          return user;
         } else if (user.password === credentials.password) {
           // Si el usuario existe y la contraseña coincide, permitimos el inicio de sesión
           return { name: credentials.username };
@@ -82,16 +83,13 @@ export const authOptions = {
         };
 
       },
-      callbacks: {
-        // using the role saved in the database, redirect to the correct page
-        async redirect(url, baseUrl) {
-          return baseUrl;
-        },
-        
-      }
 
     }),
   ],
+  pages: {
+    logIn: "/login",
+    signIn: "/signup",
+  },
 
   secret: process.env.NEXTAUTH_SECRET,
   
