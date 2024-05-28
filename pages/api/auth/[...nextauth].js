@@ -16,33 +16,6 @@ export const authOptions = {
         username: { label: "Username", type: "text", placeholder: "user" },
         password: { label: "Password", type: "password" },
       },
-      /* async authorize(credentials) {
-        const client = new MongoClient(process.env.MONGODB_URI);
-        await client.connect();
-
-        const collection = client.db("Tour").collection("Users");
-        const user = await collection.findOne({
-          username: credentials.username,
-        });
-
-        if (!user) {
-          // Si el usuario no existe, lo registramos
-          await collection.insertOne({
-            username: credentials.username,
-            password: credentials.password // Aquí deberías hashear la contraseña antes de almacenarla en la base de datos por seguridad
-            ,
-            role: null 
-          });
-          return { name: credentials.username };
-        } else if (user.password === credentials.password) {
-          // Si el usuario existe y la contraseña coincide, permitimos el inicio de sesión
-          return { name: credentials.username };
-        } else {
-          // Si la contraseña no coincide, denegamos el acceso
-          return null;
-        }
-      }, */
-
       async authorize(credentials) {
         const client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
@@ -53,8 +26,14 @@ export const authOptions = {
         });
 
         if (!user) {
-          // Si el usuario no existe, retornamos null
-          return null;
+          // Si el usuario no existe, creamos uno nuevo
+          await collection.insertOne({
+            username: credentials.username,
+            password: credentials.password,
+            provider: "credentials",
+            role: "user",
+          });
+          return { name: credentials.username };
         } else if (user.password === credentials.password) {
           // Si el usuario existe y la contraseña coincide, permitimos el inicio de sesión
           return { name: credentials.username };
@@ -86,6 +65,8 @@ export const authOptions = {
           const newUser = {
             email: profile.email,
             username: profile.name, // Puedes ajustar esto según la información que desees almacenar
+            
+            provider: "GitHub",
             // Aquí puedes almacenar más información según la que proporciona el objeto 'profile'
             role: "user"
           };
