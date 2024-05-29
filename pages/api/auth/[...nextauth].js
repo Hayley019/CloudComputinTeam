@@ -45,7 +45,47 @@ export const authOptions = {
         }
       },
     }),
-   
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      
+      // save profile to database, adding the role
+      async profile(profile) {
+        console.log("Google");
+        const client = new MongoClient(process.env.MONGODB_URI);
+        await client.connect();
+
+        const collection = client.db("Tour").collection("Users");
+        const existingUser = await collection.findOne({ email: profile.email });
+
+        if (existingUser) {
+          // Si el usuario ya existe
+          console.log("User already exists");
+
+          
+        } else {
+          // Si el usuario no existe, lo registramos
+          const newUser = {
+            email: profile.email,
+            username: profile.name, // Puedes ajustar esto según la información que desees almacenar
+            
+            provider: "Google",
+            // Aquí puedes almacenar más información según la que proporciona el objeto 'profile'
+            role: "user"
+          };
+
+          await collection.insertOne(newUser);
+          
+        }
+
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+        };
+
+      },
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
