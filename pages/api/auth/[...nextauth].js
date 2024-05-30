@@ -130,7 +130,7 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/signup",
-    Admin: "/admin",
+    Admin_page: "/admin",
   },
 
   secret: process.env.NEXTAUTH_SECRET,
