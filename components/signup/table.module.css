@@ -1,0 +1,28 @@
+.container {
+  min-height: calc(100vh - 4rem); /* Esto dejará espacio para el footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container > div {
+  max-width: 20rem; /* Ancho máximo del contenedor de los botones */
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4f46e5;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem; /* Agrega espacio entre los botones */
+}
+
+.button:hover {
+  background-color: #4338ca;
+}
+
