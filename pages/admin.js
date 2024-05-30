@@ -1,7 +1,7 @@
-return (
-    <div>
-        <h1>Admin</h1>
-        <p>Admin page</p>
-    </div>
-    
-)
+export default function admin() {
+    return (
+        <div>
+            <h1>Admin page</h1>
+        </div>
+    )
+}
