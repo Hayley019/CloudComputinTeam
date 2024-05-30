@@ -10,10 +10,10 @@ export default function Sidebar() {
   return (
     <div>
       <button
-        className={`fixed inset-y-0 right-0 z-50 flex items-center justify-center w-10 h-10 bg-gray-500 text-white hover:bg-gray-600 transition-all rounded-full shadow-md ${isVisible ? 'mr-80' : ''}`}
+        className={`fixed inset-y-0 right-0 z-50 flex items-center justify-center w-10 h-10 bg-gray-300 text-white hover:bg-gray-400 transition-all rounded-tl-lg rounded-bl-lg shadow-md ${isVisible ? 'mr-80' : ''}`}
         onClick={toggleVisibility}
       >
-        {isVisible ? '<' : '>'}
+        {isVisible ? '<-' : '->'}
       </button>
       <div className={`fixed inset-y-0 right-0 flex items-center justify-center transition-transform ${isVisible ? 'translate-x-0' : 'translate-x-full'}`}>
         <article className="w-80 rounded-xl px-6 py-12 shadow-xl bg-white">
