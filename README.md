@@ -1,11 +1,10 @@
-# Project by Comets for AstraZeneca
+# Project by BisonCoders
 ### Integrantes del equipo:
 - Adrián Dominguez
-- Jorge Martinez
-- Gabriel Morales
-- Bryan Sigala
+- Pablo Chalup
+- Andres Tena
 
-Página Web que introduce a un tour virtual de las instalaciones de AstraZeneca en Guadalajara, Jalisco. Es un tour para facilitar la orientación y comprensión de las distintas áreas, puestos y encargados de las distintas instalaciones de cada sede de la empresa AstraZeneca. 
+Página Web que introduce a un entorno virtual de las instalaciones de Instituto Nacional Mexicano Campus Chihuahua 2. Es un tour para facilitar la orientación y comprensión de las distintas áreas, puestos y encargados de las distintas instalaciones de cada edificio que compone a las instalaciones para facilitar el viaje para los alumnos de nuevo ingreso. 
 Tecmnologías usadas:
 > - Next.js para programación web de la landing page.
 > - Next Auth para el login de los usuarios.
