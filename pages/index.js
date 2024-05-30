@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>BisonTour</title>
+        <title>BisonTouuuuuuuur</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Navbar />
