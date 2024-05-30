@@ -12,39 +12,6 @@ import clientPromise from "@lib/mongodb";
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "user" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        const client = new MongoClient(process.env.MONGODB_URI);
-        await client.connect();
-
-        const collection = client.db("Tour").collection("Users");
-        const user = await collection.findOne({
-          username: credentials.username,
-        });
-
-        if (!user) {
-          // Si el usuario no existe, creamos uno nuevo
-          await collection.insertOne({
-            username: credentials.username,
-            password: credentials.password,
-            provider: "credentials",
-            role: "user",
-          });
-          return user;
-        } else if (user.password === credentials.password) {
-          // Si el usuario existe y la contraseña coincide, permitimos el inicio de sesión
-          return { name: credentials.username };
-        } else {
-          // Si la contraseña no coincide, denegamos el acceso
-          return null;
-        }
-      },
-    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
