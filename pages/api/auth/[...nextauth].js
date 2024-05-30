@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { MongoClient } from "mongodb";
+import { Admin, MongoClient } from "mongodb";
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import clientPromise from "@lib/mongodb";
 
@@ -130,6 +130,7 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/signup",
+    Admin: "/admin",
   },
 
   secret: process.env.NEXTAUTH_SECRET,
