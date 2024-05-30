@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>AstraZeneca: Virtual Tour</title>
+        <title>BisonTour</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Navbar />
