@@ -6,8 +6,14 @@ import { Admin, MongoClient } from "mongodb";
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import clientPromise from "@lib/mongodb";
 
+export const maxDuration = 50;
+export const dynamic = 'force-dynamic';
 
-
+export function GET(request) {
+  return new Response('Vercel', {
+    status: 200,
+  });
+}
 
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
